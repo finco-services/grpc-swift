@@ -17,8 +17,10 @@ import NIOCore
 
 /// Unchecked-sendable wrapper for ``NIOAsyncWriter/Sink``, to avoid getting sendability warnings.
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+@usableFromInline
 internal struct AsyncSink<Element: Sendable>: @unchecked Sendable {
-  private let sink:
+  @usableFromInline
+  internal let sink:
     NIOAsyncWriter<
       Element,
       GRPCAsyncWriterSinkDelegate<Element>
